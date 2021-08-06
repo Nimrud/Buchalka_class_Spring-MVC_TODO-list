@@ -1,0 +1,10 @@
+1) CHALLENGE 1 (project setup)
+    1) add dependencies for the following artifacts:
+        => spring-webmvc
+        => lombok
+        => logback-classic
+        => javax.annotation-api
+    2) setup the maven-compiler plugin like in Spring_Guess-the-number-game project
+    3) add logback.xml file from the before mentioned project
+    4) execute Maven goals clean and install after setting up all dependencies
+    tip: use Maven properties whenever you can
