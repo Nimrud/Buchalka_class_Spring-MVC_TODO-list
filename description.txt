@@ -5,6 +5,22 @@
         => logback-classic
         => javax.annotation-api
     2) setup the maven-compiler plugin like in Spring_Guess-the-number-game project
+        (w obecne wersji już niepotrzebne - Maven jest już zainstalowany)
+        kod:
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>${maven.version}</version>
+                        <configuration>
+                            <target>${java.version}</target>
+                            <source>${java.version}</source>
+                            <release>${java.version}</release>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
     3) add logback.xml file from the before mentioned project
     4) execute Maven goals clean and install after setting up all dependencies
     tip: use Maven properties whenever you can
