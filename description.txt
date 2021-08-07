@@ -24,3 +24,43 @@
     3) add logback.xml file from the before mentioned project
     4) execute Maven goals clean and install after setting up all dependencies
     tip: use Maven properties whenever you can
+2) Dodanie pluginu Maven WAR (Web Application Archive)
+    1) dodanie paczki WAR do projektu:
+        -> w pliku pom.xml dodanie tagu <packaging>war</packaging>
+        -> dodajemy najnowszą wersję pluginu w tym pliku:
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-war-plugin</artifactId>
+                            <version>3.3.1</version>
+                            <configuration>
+                                <failOnMissingWebXml>false</failOnMissingWebXml>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </build>
+           WAŻNE: bez części <configuration> kompilacja się nie powiedzie (brak pliku 'web.xml')
+           ...albo to samo, ale w wersji <dependency>
+    2) w folderze 'main' (w src) tworzymy nowy folder 'webapp'
+        (w nim znajdą się pliki takie jak .css czy .js)
+    3) w powyższym folderze tworzymy folder 'WEB-INF'
+        (w nim zazwyczaj umieszczamy pliki .jsp, konfiguracyjne, szablony itp., czyli pliki,
+         które nie są bezpośrednio udostępniane na zewnątrz, ale są widoczne dla serwletów)
+    4) w folderze 'webapp' tworzymy stronę główną (np. 'index.html')
+3) Dodanie pluginu Maven Cargo (ten plugin uruchamia serwer Tomcat)
+    -> w pliku 'pom.xml', w sekcji plugins dodajemy
+        <plugin>
+            <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-maven3-plugin</artifactId>
+            <version>1.9.6</version>
+            <configuration>
+                <container>
+                    <containerId>tomcat10x</containerId>
+                    <type>embedded</type>
+                </container>
+            </configuration>
+        </plugin>
+    -> Maven -> reload all -> execute Maven goal -> mvn clean install
+    -> Maven -> [project] -> Plugins -> cargo -> cargo:run
+    -> odpalamy przeglądarkę (http://localhost:8080/[projekt]/index.html)
