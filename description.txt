@@ -64,3 +64,6 @@
     -> Maven -> reload all -> execute Maven goal -> mvn clean install
     -> Maven -> [project] -> Plugins -> cargo -> cargo:run
     -> odpalamy przeglądarkę (http://localhost:8080/[projekt]/index.html)
+4) Tworzenie Dispatcher Servletu (dyspozytora)
+    -> tworzymy folder 'config' w folderze 'java', a nim klasę WebConfig
+        (musi być oznaczona adnotacją @EnableWebMvc)
