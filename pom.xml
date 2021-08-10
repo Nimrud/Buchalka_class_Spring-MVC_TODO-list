@@ -39,6 +39,16 @@
             <version>${lombok.version}</version>
         </dependency>
 
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
+            <!-- provided: servlet container dostarczy nam tę dependency -->
+            <!-- w ten sposób nie musimy tego pakować do naszego pliku WAR -->
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -50,6 +60,7 @@
         <lombok.version>1.18.20</lombok.version>
         <maven.war.version>3.3.1</maven.war.version>
         <maven.cargo.version>1.9.6</maven.cargo.version>
+        <servlet-api.version>4.0.1</servlet-api.version>
     </properties>
 
     <build>
@@ -68,7 +79,7 @@
                 <version>${maven.cargo.version}</version>
                 <configuration>
                     <container>
-                        <containerId>tomcat10x</containerId>
+                        <containerId>tomcat9x</containerId>
                         <type>embedded</type>
                     </container>
                 </configuration>
