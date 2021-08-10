@@ -91,3 +91,13 @@
     w niej tworzymy metodę z adnotacjami
     @GetMapping  => w nawiasie podajemy końcówkę adresu URL, pod którym jest ona dostępna
     @ResponseBody  => jeśli chcemy zwrócić wpisany tekst do przeglądarki (zamiast widoku)
+7) View Resolver oraz View
+    1) folder webapp -> WEB-INF -> nowy folder 'view' -> nowy plik widoku (.jsp)
+    2) w klasie WebConfig dodajemy Bean method 'viewResolver'
+        doda ona do każdego widoku początek ścieżki oraz rozszerzenie .jsp
+        (czyli każdemu widokowi będziemy nadawać samą nazwę)
+    3) w klasie DemoController dodajemy nową metodę
+        dodajemy @GetMapping oraz nazwę widoku (jako 'return')
+
+
+
