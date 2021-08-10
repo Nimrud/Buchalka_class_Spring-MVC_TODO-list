@@ -12,4 +12,11 @@ public class DemoController {
     public String hello() {
         return "hello there";
     }
+
+    @GetMapping("welcome")
+    public String welcome() {
+        return "welcome";
+        // dzięki użyciu kodu w klasie WebConfig, prefiks i sufiks zostaną automatycznie dodane
+        // więc możemy tu wpisać samo 'welcome' zamiast '/WEB-INF/view/welcome.jsp'
+    }
 }
