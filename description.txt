@@ -81,3 +81,13 @@
             używamy metod setLoadOnStartup (kontekst stworzy instancję serwletu i ją zainicjalizuje)
                 oraz addMapping (nadanie serwletowi adresu URL)
     -> sprawdzamy, czy działa (Maven -> mvn clean install; Maven -> Plugins -> Cargo -> run)
+5) TIP: jeśli po zmianie kodu chcemy szybko zrobić mvn clean, install oraz cargo:run,
+    to klikamy prawym przyciskiem na cargo:run, wybieramy ModifyRun Configuration,
+    a w nim zamieniamy:  cargo:run -f pom.xml
+    na:  clean install cargo:run -f pom.xml
+    Pojawi się nowa opcja w okienku Maven (Run Configurations)
+6) Tworzenie pierwszego kontrolera
+    [pakiet] -> nowy folder 'controller' -> nowa klasa 'Controller' (@Controller)
+    w niej tworzymy metodę z adnotacjami
+    @GetMapping  => w nawiasie podajemy końcówkę adresu URL, pod którym jest ona dostępna
+    @ResponseBody  => jeśli chcemy zwrócić wpisany tekst do przeglądarki (zamiast widoku)
