@@ -5,10 +5,10 @@
         </encoder>
     </appender>
 
-    <logger name="org.example" level="TRACE"/>
-    <logger name="org.springframework" level="TRACE"/>
+    <logger name="org.example" level="DEBUG"/>
+    <logger name="org.springframework" level="DEBUG"/>
 
-    <root level="TRACE">
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
