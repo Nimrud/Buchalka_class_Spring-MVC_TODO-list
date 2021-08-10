@@ -56,7 +56,7 @@
             <version>1.9.6</version>
             <configuration>
                 <container>
-                    <containerId>tomcat10x</containerId>
+                    <containerId>tomcat9x</containerId>
                     <type>embedded</type>
                 </container>
             </configuration>
@@ -64,6 +64,20 @@
     -> Maven -> reload all -> execute Maven goal -> mvn clean install
     -> Maven -> [project] -> Plugins -> cargo -> cargo:run
     -> odpalamy przeglądarkę (http://localhost:8080/[projekt]/index.html)
+    UWAGA! Wpisy Loggera się nie wyświetlają w konsoli, jeśli używamy Tomcata 10 (działają dla wersji 9x)
 4) Tworzenie Dispatcher Servletu (dyspozytora)
     -> tworzymy folder 'config' w folderze 'java', a nim klasę WebConfig
         (musi być oznaczona adnotacją @EnableWebMvc)
+    -> dodajemy dependency serwletu w pliku pom.xml (MVN Repo: Java Servlet API)
+    -> rejestracja serwletu: implementujemy interfejs WebApplicationInitializer
+        => tworzymy klasę WebAppInitializer (z powyższą implementacją)
+        => implementujemy metodę onStartup
+        => w niej tworzymy kontekst aplikacji (=Spring Container)
+            oraz, używając tego kontekstu, rejestrujemy aplikację webową
+            (uwaga: aby zarejestrować klasę, musi ona zostać oznaczona @Configuration)
+        => tworzymy Dispatcher Servlet oraz rejestrujemy go używając servletContext
+            (który jest parametrem metody onStartup)
+            nadajemy też naszemu serwletowi nazwę
+            używamy metod setLoadOnStartup (kontekst stworzy instancję serwletu i ją zainicjalizuje)
+                oraz addMapping (nadanie serwletowi adresu URL)
+    -> sprawdzamy, czy działa (Maven -> mvn clean install; Maven -> Plugins -> Cargo -> run)
