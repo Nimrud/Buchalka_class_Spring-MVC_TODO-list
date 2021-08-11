@@ -98,6 +98,11 @@
         (czyli każdemu widokowi będziemy nadawać samą nazwę)
     3) w klasie DemoController dodajemy nową metodę
         dodajemy @GetMapping oraz nazwę widoku (jako 'return')
+8) Model
+    przechowuje dane w formacie 'kucz - wartość'
+    można dodawać dane na 2 sposoby:
+        -> model.addAttribute("klucz", "wartość")
+        -> za pomocą adnotacji @ModelAttribute
 
 
 
