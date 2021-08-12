@@ -122,7 +122,13 @@
         and use another attribute instead (the value for the attribute should come
         from calling getHelloMessage() from DemoService
     7) modify the welcome.jsp file to use the new model attribute name instead of user
-10)
+10) @RequestParam
+    -> tą adnotacją zazwyczaj oznaczamy dane wymagane (jeśli ich nie dostarczymy, to będą errory)
+    -> ma ona jednak opcję 'required', w której możemy oznaczyć parametr jako opcjonalny
+    -> parametr zapytania można przekazać kontrolerowi w adresie URL, np.:
+        http://localhost:8080/TODO-list/welcome?user=Chris
+    -> jeśli w adresie chcemy przekazać 2 lub więcej parametrów, to rozdzielamy je znakiem &
+
 
 
 
