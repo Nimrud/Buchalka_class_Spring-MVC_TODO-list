@@ -4,7 +4,7 @@
 </head>
 <body>
     <h1>Welcome</h1>
-    <h2>${user}</h2>
+    <h2>${newUser}</h2>
     <h2>${welcomeMessage}</h2>
 </body>
 </html>
