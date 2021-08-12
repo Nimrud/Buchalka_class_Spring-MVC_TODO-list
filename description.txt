@@ -102,7 +102,27 @@
     przechowuje dane w formacie 'kucz - wartość'
     można dodawać dane na 2 sposoby:
         -> model.addAttribute("klucz", "wartość")
-        -> za pomocą adnotacji @ModelAttribute
+            do wartości można się odwoływać w pliku .jsp => ${klucz}
+        -> za pomocą adnotacji @ModelAttribute("wartość")
+            do wartości w nawiasie można się odwoływać w pliku .jsp => ${wartość}
+9) CHALLENGE 2 (service)
+    1) create an interface called DemoService with a method named getHelloMessage()
+        that has a String parameter called user and create another method named
+        getWelcomeMessage() without parameters - both methods should return a String
+    2) create a class called DemoServiceImpl and annotate it with the @Service annotation
+    3) the DemoServiceImpl class needs to implement the interface, and within the class,
+        the method getHelloMessage() should return the String "Hello " + user,
+        and the method getWelcomeMessage() should return the String
+        "Welcome to this Demo Application"
+    4) in DemoController inject/autowire DemoService using constructor injection
+    5) in the controller methods, use DemoService to add attributes to the model
+        instead of using Strings. In other words, call the service methods
+        to get messages that are used as model attributes and displayed by JSP page
+    6) you have to remove the user model attribute in the welcome() controller method
+        and use another attribute instead (the value for the attribute should come
+        from calling getHelloMessage() from DemoService
+    7) modify the welcome.jsp file to use the new model attribute name instead of user
+10)
 
 
 
