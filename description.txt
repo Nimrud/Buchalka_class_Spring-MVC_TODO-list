@@ -128,7 +128,7 @@
     -> parametr zapytania można przekazać kontrolerowi w adresie URL, np.:
         http://localhost:8080/TODO-list/welcome?user=Chris
     -> jeśli w adresie chcemy przekazać 2 lub więcej parametrów, to rozdzielamy je znakiem &
-11) Tworzenie modelu (klasa TodoItem)
+11) Tworzenie modelu (klasa TodoItem i TodoData)
     -> elementy będziemy wyszukiwać po ID, więc dla tego pola trzeba nadpisać metody
         .equals() i .hashcode()
         Fn + Alt + Ins => zaznaczamy 'Accept subclasses as parameter (...)' oraz jako
@@ -138,8 +138,10 @@
     -> jeśli chcemy za pomocą Lomboka wygenerować .equals() oraz .hashcode() tylko dla 1 pola,
         to dodajemy nad klasą adnotację:
             @EqualsAndHashCode(of = "[nazwa pola]")
+                => metoda .equals() będzie porównywała obiekty po [nazwa pola]
         lub (dla kilku pól):
             @EqualsAndHashCode(of = {"[nazwa pola 1]", "[nazwa pola 2]"})
+    -> klasa TodoData - przechowuje obiekty w pamięci komputera zamiast DB
 
 
 
