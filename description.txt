@@ -142,7 +142,11 @@
         lub (dla kilku pól):
             @EqualsAndHashCode(of = {"[nazwa pola 1]", "[nazwa pola 2]"})
     -> klasa TodoData - przechowuje obiekty w pamięci komputera zamiast DB
-
+12) aby uniknąć pomyłek przy wpisywaniu adresów "z palucha", warto stworzyć klasę,
+    która będzie je przechowywać jako stałe (=> util => Mappings.class)
+    -> klasa ta jest 'final', aby przez pomyłkę nie użyć w innej klasie 'extends Mappings'
+    -> klasa ma prywatny konstruktor, aby nie było możliwe stworzenie jej instancji w innej klasie
+    To samo z nazwami Widoków.
 
 
 
