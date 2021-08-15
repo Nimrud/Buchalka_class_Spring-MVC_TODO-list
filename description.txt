@@ -147,6 +147,23 @@
     -> klasa ta jest 'final', aby przez pomyłkę nie użyć w innej klasie 'extends Mappings'
     -> klasa ma prywatny konstruktor, aby nie było możliwe stworzenie jej instancji w innej klasie
     To samo z nazwami Widoków.
+13) JSTL (JavaServer Pages Standard Tag Library) - kolekcja tagów JSP
+    wspiera szereg typowych zadań, takich jak iteracja, tagi do manipulacji dokumentami XML, tagi SQL itp.
+    Przykład:
+        <c:forEach> - iteracja kolekcji
+        <c:out> - wyświetlanie wyniku wyrażenia
+        <c:url> - formatowanie adresu URL jako Stringa i zapisywanie do zmiennej
+    1) Wymagane jest dodanie dependency w pliku pom.xml
+    2) W pliku .jsp wykorzystującym JSTL, musimy najpierw zaimportować tagi (użyć taglib):
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    3) aby wstawić dynamiczną listę, odwołujemy się do kontrolera z @ModelAttribute
+        (który z kolei odwołuje się do klasy z listą), a następnie do samej listy przedmiotów:
+        <c:forEach var="item" items="${todoData.items}">
+        -> todoData: nazwa kontrolera z @ModelAttribute (tu: zwraca nowy obiekt TodoData)
+        -> items: lista przedmiotów w klasie TodoData
+        -> item: pojedynczy przedmiot z powyższej listy
+    4) do poszczególnych rekordów odwołujemy się za pomocą <c:out>
+        <c:out value="${item.[getter]}"/>
 
 
 

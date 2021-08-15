@@ -49,6 +49,13 @@
             <!-- w ten sposób nie musimy tego pakować do naszego pliku WAR -->
         </dependency>
 
+        <!-- JSTL Tag Library -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -61,6 +68,7 @@
         <maven.war.version>3.3.1</maven.war.version>
         <maven.cargo.version>1.9.6</maven.cargo.version>
         <servlet-api.version>4.0.1</servlet-api.version>
+        <jstl.version>1.2</jstl.version>
     </properties>
 
     <build>
