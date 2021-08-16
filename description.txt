@@ -164,6 +164,24 @@
         -> item: pojedynczy przedmiot z powyższej listy
     4) do poszczególnych rekordów odwołujemy się za pomocą <c:out>
         <c:out value="${item.[getter]}"/>
+14) CHALLENGE 3
+    1) create an interface called TodoItemService in the package service with methods:
+        -> addItem() with 1 parameter of type TodoItem; it should not return a value;
+        -> removeItem() with 1 int parameter called id; it should not return a value;
+        -> getItem() with 1 int parameter called id; it should return a value of type TodoItem;
+        -> updateItem() with 1 parameter of type TodoItem; it should not return a value;
+        -> getData() with no parameters; it should return a value of type TodoData.
+    2) create a class called TodoItemServiceImpl in the package service and annotate it
+        with the @Service annotation
+    3) create a final field of type TodoData and initialize it (e.g. "new TodoData()")
+    4) the TodoItemServiceImpl class needs to implement the TodoItemService interface,
+        and all the methods should be implemented (for example, for the addItem() method,
+        call addItem() from the TodoData class, which is declared as a field)
+    5) in TodoController inject/autowire TodoItemService using constructor injection
+    6) in the controller call the service methods to get todoData as a model attribute
+        instead of using new TodoData();
+    7) to test it out, within the TodoData constructor add another dummy TodoItem
+        and confirm that the table displays 4 items
 
 
 
