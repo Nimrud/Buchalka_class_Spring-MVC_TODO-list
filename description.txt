@@ -222,3 +222,21 @@
             => dodajemy go jako model attribute
             => jako 'return' podajemy nazwę strony .jsp
         -> do obsługi danych wysłanych za pomocą formularza (@PostMapping)
+16) Home View
+    -> w klasie WebConfig konfigurujemy (i definiujemy) widok .jsp
+    -> musimy zaimplementować interfejs WebMvcConfigurer, który zawiera metody
+        pozwalające na dostosowanie konfiguracji, takie jak np. addViewControllers
+    -> metoda addViewControllers pozwala na dodanie prostego, automatycznego kontrolera
+        do widoku .jsp, w którym nie używamy ModelAttributes (czyli nie ma w nim
+        żadnej logiki biznesowej)
+        => pozwala to nie dodawać nowej metody do kontrolera (większa przejrzystość kodu)
+        => kiedy otworzymy URL aplikacji, to przekieruje nas na wskazany adres .jsp
+17) Delete Item
+    -> link do kasowania danego rekordu powinien się znaleźć obok niego
+    -> z tego powodu, w widoku .jsp kod powinien się znaleźć wewnątrz <c:forEach>
+    -> musimy się w nim odwołać do danego parametru przedmiotu z listy (np. ID),
+        który to parametr zostanie przekazany do kontrolera:
+            <c:forEach var="item" items="${todoData.items}">
+                <c:url var="deleteItem" value="${Mappings.DELETE_ITEM}">
+                    <c:param name="id" value="${item.id}"/>
+                </c:url>
