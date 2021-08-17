@@ -193,12 +193,15 @@
     3) zaletą Spring form tags jest definiowanie @ModelAttribute (powiązanie pól całego formularza
         z pojedynczym parametrem metody)
         nazwa @Attribute w parametrze metody name musi być taka sama jak nazwa w formularzu
-    4) w kontrolerze tworzymy metodę do obsługi formularza:
+    4) w kontrolerze tworzymy metodę do obsługi formularza
+        (wywołana po wciśnięciu przycisku 'wyślij' w formularzu):
             @PostMapping(addItem)
             public String processItem(@ModelAttribute(todoItem) TodoItem item) {
                 return "redirect:/items";
             }
-        jako że nazwa @Attribute = nazwa w formularzu (inaczej nie zadziała), to:
+        -> dodanie @ModelAttribute sprawia, że dane z formularza zostaną automatycznie
+            przekazana do tej metody jako 1 obiekt TodoItem
+        -> jako że nazwa @Attribute = nazwa w formularzu (inaczej nie zadziała), to w pliku .jsp:
             <form:form method="POST" modelAttribute="todoItem">
                  [...]
             </form:form>
@@ -207,4 +210,15 @@
             <%@ page import="org.example.util.AttributeNames" %>
         dzięki temu do nazwy można się odwołać jako:
             <form:form method="POST" modelAttribute="${AttributeNames.TODO_ITEM}">
-
+    6) w pliku .jsp tworzymy formularz
+            <td>
+                <form:input path="id" disabled="true" />
+            </td>
+        -> path name musi być takie samo jak nazwa analogicznego pola w klasie TodoItem
+        -> disabled: aby użytkownik nie widział i mógł nadać numeru ID (będzie to automatyczne)
+    7) w kontrolerze tworzymy 2 metody:
+        -> do wyświetlania formularza (@GetMapping)
+            => tworzymy nowy, pusty obiekt TodoItem
+            => dodajemy go jako model attribute
+            => jako 'return' podajemy nazwę strony .jsp
+        -> do obsługi danych wysłanych za pomocą formularza (@PostMapping)
