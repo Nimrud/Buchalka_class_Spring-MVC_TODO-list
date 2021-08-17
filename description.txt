@@ -183,7 +183,28 @@
         instead of using new TodoData();
     7) to test it out, within the TodoData constructor add another dummy TodoItem
         and confirm that the table displays 4 items
-
-
-
+15) Dodanie formularza (Spring form tags)
+    1) w pliku .jsp strony musimy aktywować tagi formularzy Springa:
+        <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    2) formularz w pliku .jsp musi zostać 'otoczony' tagiem:
+        <form:form method="POST">
+            [...]
+        </form:form>
+    3) zaletą Spring form tags jest definiowanie @ModelAttribute (powiązanie pól całego formularza
+        z pojedynczym parametrem metody)
+        nazwa @Attribute w parametrze metody name musi być taka sama jak nazwa w formularzu
+    4) w kontrolerze tworzymy metodę do obsługi formularza:
+            @PostMapping(addItem)
+            public String processItem(@ModelAttribute(todoItem) TodoItem item) {
+                return "redirect:/items";
+            }
+        jako że nazwa @Attribute = nazwa w formularzu (inaczej nie zadziała), to:
+            <form:form method="POST" modelAttribute="todoItem">
+                 [...]
+            </form:form>
+    5) aby uniknąć pomyłek przy wpisywaniu nazw w pliku .jsp, warto zaimportować klasę,
+        w której przechowujemy nazwy zmiennych
+            <%@ page import="org.example.util.AttributeNames" %>
+        dzięki temu do nazwy można się odwołać jako:
+            <form:form method="POST" modelAttribute="${AttributeNames.TODO_ITEM}">
 
