@@ -123,6 +123,9 @@
         from calling getHelloMessage() from DemoService
     7) modify the welcome.jsp file to use the new model attribute name instead of user
 10) @RequestParam
+    -> służy do przechwytywania parametrów z zapytania (np. /home/users?id=6), formularza itp.
+        jeśli dodamy @RequestParam w parametrze kontrolera metody, to ona wtedy Spring przechwyci id=6
+            public String displayUserInfo(@RequestParam int id) {}
     -> tą adnotacją zazwyczaj oznaczamy dane wymagane (jeśli ich nie dostarczymy, to będą errory)
     -> ma ona jednak opcję 'required', w której możemy oznaczyć parametr jako opcjonalny
     -> parametr zapytania można przekazać kontrolerowi w adresie URL, np.:
@@ -240,3 +243,12 @@
                 <c:url var="deleteItem" value="${Mappings.DELETE_ITEM}">
                     <c:param name="id" value="${item.id}"/>
                 </c:url>
+18) CHALLENGE 4
+    Implement delete functionality
+    Tips:
+        1) create a method called deleteItem() in the TodoItemController with mapping
+            for deleteItem (use the constant from the Mappings class)
+        2) the method deleteItem() needs to have a parameter called id of type int
+            annotated with @RequestParam
+        3) in the method deleteItem(), call the service method removeItem()
+            and redirect to items (like we did with the processItem() method)
