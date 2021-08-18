@@ -266,3 +266,16 @@
         => w przypadku DB sprawdzamy, czy ID == null
     -> jeśli nie działa, to sprawdzamy, czy w klasie TodoItem mamy odpowiednio skonfigurowane
         metody equals() i hashCode() - powinny być ustawione na pole ID, bo po nim wyszukujemy
+20) CHALLENGE 5
+    Implement the view item functionality
+    Tips:
+        1) create a view called view_item.jsp with a table to display a single item;
+            below the table, add a hyperlink that will navigate back to the table containing
+            all the items (items_list.jsp)
+        2) add a hyperlink to the table (items_list.jsp) for viewing a single item;
+            this should be similar to what we did with the delete and edit hyperlinks
+        3) create a method called viewItem() in the TodoItemController with mapping for viewItem
+        4) the method viewItem() needs to have a parameter of type int called id
+            annotated with @RequestParam and a parameter of type Model called model
+        5) in the method viewItem(), call the service method getItem() and add the item
+            to the model by using the addAttribute() method
