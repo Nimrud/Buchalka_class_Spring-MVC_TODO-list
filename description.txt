@@ -252,3 +252,17 @@
             annotated with @RequestParam
         3) in the method deleteItem(), call the service method removeItem()
             and redirect to items (like we did with the processItem() method)
+19) Edit Item
+    -> można tu wykorzystać funkcjonalność metody addItem(), po kilku zmianach:
+        => do parametrów metody trzeba dodać ID
+        => jest to parametr niewymagany, gdyż przy tworzeniu nowego rekordu nie podajemy ID,
+            potrzeba go jedynie do edycji
+        => domyślna wartość to -1, bo nie ma takiego rekordu (podajemy to jako Stringa!)
+            public String addItem(@RequestParam(required = false, defaultValue = "-1") int id,
+                                      Model model) {}
+    -> zmieniamy też funkcjonalność metody processItem(), która jest wykonywana
+        po wypełnieniu add_item.jsp (tu: edycji danych)
+        => sprawdzamy, czy ID rekordu == 0 (jeśli tak -> addItem(), jeśli nie -> updateItem() )
+        => w przypadku DB sprawdzamy, czy ID == null
+    -> jeśli nie działa, to sprawdzamy, czy w klasie TodoItem mamy odpowiednio skonfigurowane
+        metody equals() i hashCode() - powinny być ustawione na pole ID, bo po nim wyszukujemy
